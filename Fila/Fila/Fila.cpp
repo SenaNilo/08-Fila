@@ -88,13 +88,35 @@ void insere()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
-
+	if (inicio == NULL && fim == NULL) {
+		inicio = novo;
+		fim = novo;
+	}
+	else {
+		NO* aux = fim;
+		aux->prox = novo;
+		fim = novo;
+	}
 }
 
 void remove()
 {
-
-
-
+	if (inicio == NULL) {
+		cout << "Nao existe numero para a exclusao" << endl;
+	}
+	else {
+		if (inicio == fim) {
+			NO* aux = inicio;
+			inicio = NULL;
+			fim = NULL;
+			cout << "Numero excluido: " << aux->valor << endl;
+			free(aux);
+		}
+		else {
+			NO* aux = inicio;
+			inicio = inicio->prox;
+			cout << "Numero excluido: " << aux->valor << endl;
+			free(aux);
+		}
+	}
 }
-
